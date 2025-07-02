@@ -11,7 +11,7 @@ const cors = require('cors');
 connectDb();
 
 app.use(cors({
-  origin: 'http://localhost:5173 ',
+  origin: ['http://localhost:5173', 'https://libaray-manager.vercel.app'],
   credentials: true,
 }));
 
