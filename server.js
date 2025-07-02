@@ -11,7 +11,7 @@ const cors = require('cors');
 connectDb();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'http://localhost:5173 ',
   credentials: true,
 }));
 
@@ -20,6 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/Views');
+
+app.get('/',(req,res)=>{
+  res.send('Welcome to the Book Store API');
+})
 
 // app.get('/', async (req, res) => {
 //     try {
