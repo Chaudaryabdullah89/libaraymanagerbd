@@ -38,7 +38,10 @@ router.post('/register', async (req, res) => {
         );
         res.cookie('token', token, {
             httpOnly: true,
-            maxAge: 60 * 60 * 1000 // 1 hour
+            maxAge: 60 * 60 * 1000, // 1 hour
+            sameSite: 'None', // for cross-site
+            secure: true,     // for HTTPS
+            // domain: '.yourdomain.com', // if needed
         });
 
         res.status(201).json({ message: 'User registered successfully', user: newUser });
@@ -77,7 +80,10 @@ router.post('/login', async (req, res) => {
         );
         res.cookie('token', token, {
             httpOnly: true,
-            maxAge: 60 * 60 * 1000 // 1 hour
+            maxAge: 60 * 60 * 1000, // 1 hour
+            sameSite: 'None', // for cross-site
+            secure: true,     // for HTTPS
+            // domain: '.yourdomain.com', // if needed
         });
         console.log(`JWT token generated for user: ${user.username} (ID: ${user._id})`);
         res.status(201).json({ message: 'User logged in successfully', user: user });
